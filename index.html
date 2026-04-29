@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Nexify</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Header styling */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo span {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #cbd5e1;
+            display: block;
+            letter-spacing: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        .cta-btn {
+            background: #3b82f6;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            color: white !important;
+            font-weight: 600;
+        }
+
+        .cta-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1280px;
+            margin: 3rem auto 2rem;
+            padding: 2rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-badge {
+            background: #e0f2fe;
+            color: #0284c7;
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(to right, #0f172a, #1e40af);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #334155;
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: #475569;
+            margin: 0;
+        }
+
+        .hero-image {
+            flex: 1;
+            background: linear-gradient(145deg, #d9e6f5, #ffffff);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+        }
+
+        .hero-image i {
+            font-size: 6rem;
+            color: #1e40af;
+            opacity: 0.8;
+        }
+
+        /* Form section + job description */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            color: #0f172a;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #475569;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .job-details {
+            background: #f1f5f9;
+            padding: 2rem;
+            flex: 1.2;
+            min-width: 250px;
+        }
+
+        .job-details h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .job-details ul {
+            margin: 1rem 0 1.5rem 1.2rem;
+        }
+
+        .job-details li {
+            margin: 0.7rem 0;
+            color: #1e293b;
+        }
+
+        .job-details i {
+            color: #3b82f6;
+            width: 24px;
+        }
+
+        .apply-form {
+            padding: 2rem;
+            flex: 1.8;
+            min-width: 300px;
+        }
+
+        .apply-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #0f172a;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: 0.2s;
+            background: #fff;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+        }
+
+        .double-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .double-group .form-group {
+            flex: 1;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .radio-group label {
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        button {
+            background: #0f172a;
+            color: white;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 2rem;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+        }
+
+        .success-message {
+            background: #dcfce7;
+            color: #166534;
+            padding: 1rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 760px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                margin-top: 0.5rem;
+            }
+            .header {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="nav-container">
+        <div class="logo">
+            <h1>Nexify<span>Innovation Labs</span></h1>
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#jobs">Careers</a>
+            <a href="#apply">Apply Now</a>
+            <a href="#" class="cta-btn">Hiring</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-bolt"></i> We're growing fast!</div>
+            <h1>Shape the future <br> of web experiences</h1>
+            <p>Join Nexify — a product-led company redefining how businesses scale. We are looking for passionate Frontend & MERN stack developers to join our remote-first team.</p>
+            <div class="stats">
+                <div class="stat-item"><h3>50+</h3><p>Team members</p></div>
+                <div class="stat-item"><h3>4.9⭐</h3><p>Glassdoor rating</p></div>
+                <div class="stat-item"><h3>12+</h3><p>Global clients</p></div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-laptop-code"></i>
+            <p style="margin-top: 1rem; font-weight: 500;">Build with React, Node, MongoDB</p>
+        </div>
+    </div>
+
+    <!-- Job & Form section (hiring frontend & MERN) -->
+    <div id="jobs" style="scroll-margin-top: 80px;"></div>
+    <div class="section-title">🚀 Open Positions</div>
+    <div class="section-sub">We're accepting applications for two critical roles. Choose the track that matches your expertise.</div>
+
+    <div class="form-container" id="apply">
+        <!-- job description aside -->
+        <div class="job-details">
+            <h3><i class="fas fa-code"></i> Frontend Dev</h3>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> React.js / Next.js expert</li>
+                <li><i class="fas fa-check-circle"></i> Tailwind, TypeScript</li>
+                <li><i class="fas fa-check-circle"></i> Responsive & performance</li>
+                <li><i class="fas fa-check-circle"></i> Git & collaboration</li>
+            </ul>
+            <h3 style="margin-top: 2rem;"><i class="fas fa-server"></i> MERN Stack Dev</h3>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> MongoDB, Express, React, Node</li>
+                <li><i class="fas fa-check-circle"></i> REST APIs / GraphQL</li>
+                <li><i class="fas fa-check-circle"></i> Authentication & security</li>
+                <li><i class="fas fa-check-circle"></i> Cloud deployment (AWS/Vercel)</li>
+            </ul>
+            <div style="margin-top: 1.5rem; background: #e2e8f0; border-radius: 1rem; padding: 0.8rem; text-align: center;">
+                <i class="fas fa-map-marker-alt"></i> 100% Remote | Competitive salary + equity
+            </div>
+        </div>
+
+        <!-- application form -->
+        <div class="apply-form">
+            <h3>✨ Apply Now</h3>
+            <p style="margin-bottom: 1.2rem;">Fill the details — our talent team will reach out.</p>
+            <form id="hiringForm">
+                <div class="double-group">
+                    <div class="form-group">
+                        <label>Full name *</label>
+                        <input type="text" id="fullname" placeholder="Ali Raza / Sara Khan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" id="email" placeholder="hello@nexify.com" required>
+                    </div>
+                </div>
+                <div class="double-group">
+                    <div class="form-group">
+                        <label>Phone (with country code)</label>
+                        <input type="tel" id="phone" placeholder="+92 300 1234567">
+                    </div>
+                    <div class="form-group">
+                        <label>Years of experience *</label>
+                        <select id="experience" required>
+                            <option value="">Select</option>
+                            <option>0-1 (Fresher)</option>
+                            <option>1-3 years</option>
+                            <option>3-5 years</option>
+                            <option>5+ years</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Which role are you applying for? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="role" value="Frontend Developer (React/Next)" required> Frontend Developer</label>
+                        <label><input type="radio" name="role" value="MERN Stack Developer"> MERN Stack Developer</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>GitHub / Portfolio URL *</label>
+                    <input type="url" id="portfolio" placeholder="https://github.com/yourusername" required>
+                </div>
+                <div class="form-group">
+                    <label>LinkedIn profile</label>
+                    <input type="url" id="linkedin" placeholder="https://linkedin.com/in/username">
+                </div>
+                <div class="form-group">
+                    <label>Why are you a great fit? (skills / projects)</label>
+                    <textarea rows="3" id="message" placeholder="Mention your experience with React, Node, MongoDB, or any standout projects..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Expected monthly salary (USD) *</label>
+                    <input type="number" id="salary" placeholder="e.g., 3000" required>
+                </div>
+                <div id="formFeedback"></div>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Submit Application</button>
+            </form>
+            <p style="font-size: 0.7rem; margin-top: 1rem; color: #475569;">* Required fields. We respond within 48 hours.</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2025 Nexify Innovation Labs — Building the future, one line of code at a time.</p>
+    <p style="margin-top: 0.5rem;"><i class="fab fa-linkedin"></i> /company/nexify  |  <i class="fab fa-github"></i> nexify-careers</p>
+</footer>
+
+<script>
+    // form handling + submission simulation + local storage + validation
+    document.getElementById('hiringForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // get values
+        const fullname = document.getElementById('fullname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const experience = document.getElementById('experience').value;
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        let selectedRole = '';
+        for (let radio of roleRadios) {
+            if (radio.checked) {
+                selectedRole = radio.value;
+                break;
+            }
+        }
+        const portfolio = document.getElementById('portfolio').value.trim();
+        const linkedin = document.getElementById('linkedin').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const salary = document.getElementById('salary').value.trim();
+        const feedbackDiv = document.getElementById('formFeedback');
+
+        // validation
+        if (!fullname || !email || !experience || !selectedRole || !portfolio || !salary) {
+            feedbackDiv.innerHTML = `<div class="success-message" style="background:#fee2e2; color:#b91c1c;"><i class="fas fa-exclamation-circle"></i> Please fill all required fields: Name, Email, Experience, Role, Portfolio & expected salary.</div>`;
+            return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+            feedbackDiv.innerHTML = `<div class="success-message" style="background:#fee2e2; color:#b91c1c;">❌ Enter a valid email address.</div>`;
+            return;
+        }
+        if (!portfolio.startsWith('http')) {
+            feedbackDiv.innerHTML = `<div class="success-message" style="background:#fee2e2; color:#b91c1c;">🔗 Portfolio/GitHub URL must start with http:// or https://</div>`;
+            return;
+        }
+        if (isNaN(salary) || Number(salary) <= 0) {
+            feedbackDiv.innerHTML = `<div class="success-message" style="background:#fee2e2; color:#b91c1c;">💰 Please enter a valid expected salary.</div>`;
+            return;
+        }
+
+        // build application object
+        const application = {
+            id: Date.now(),
+            fullname,
+            email,
+            phone: phone || "Not provided",
+            experience,
+            role: selectedRole,
+            portfolio,
+            linkedin: linkedin || "Not provided",
+            whyHire: message || "No additional message",
+            salary: `$${salary}`,
+            appliedAt: new Date().toLocaleString()
+        };
+
+        // store in localStorage for demo purposes (optional)
+        let allApps = localStorage.getItem('nexify_applications');
+        if(allApps) {
+            allApps = JSON.parse(allApps);
+        } else {
+            allApps = [];
+        }
+        allApps.push(application);
+        localStorage.setItem('nexify_applications', JSON.stringify(allApps));
+
+        // show success message and reset form optionally
+        feedbackDiv.innerHTML = `<div class="success-message"><i class="fas fa-check-circle"></i> ✅ Application received, ${fullname}! Our hiring team will contact you within 48h. (Demo saved locally)</div>`;
+        
+        // reset form fields except we can keep or reset; better reset for next demo but show message 
+        setTimeout(() => {
+            document.getElementById('hiringForm').reset();
+            feedbackDiv.innerHTML = '';
+            // optional scroll to top of form
+            document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+        }, 3000);
+
+        // Also console log for review
+        console.log("Application submitted:", application);
+    });
+</script>
+
+<!-- LinkedIn post content as a hidden pre block -->
+<div style="display: none;" id="linkedinPostContent">
+    🚀 We're hiring at Nexify! Join our mission-driven team as a Frontend Developer or MERN Stack Developer (Remote, Worldwide).
+
+    🔥 Open Roles:
+    ✅ Frontend Developer (React.js / Next.js / Tailwind) 
+    ✅ MERN Stack Developer (MongoDB, Express, React, Node)
+
+    💡 What we offer:
+    - 100% remote & flexible culture
+    - Competitive USD salary + equity
+    - Learning budget & latest tech stack
+    - Fast-growing product company
+
+    📌 Requirements: 
+    - Strong JavaScript/TypeScript, Git, problem-solving
+    - For Frontend: Deep understanding of React ecosystem
+    - For MERN: REST APIs, authentication, database design
+
+    👉 Apply via the link below — fill the form, share your GitHub/portfolio, and we'll get back to you within 48 hours!
+
+    📍 Link to apply: [Paste your live website URL here]
+
+    ♻️ Repost to help your network find their dream remote dev role!
+    #hiring #frontenddeveloper #mernstack #reactjs #nodejs #remotejobs #techcareers #nexify
+</div>
+
+<script>
+    // optional small notification if user visits console but we also present an alert message for linkedin content
+    console.log("%c✨ LinkedIn Post Content ready → copy from below or inspect hidden div", "color: #3b82f6; font-size: 14px");
+    const linkedinText = document.getElementById('linkedinPostContent').innerText;
+    console.log(linkedinText);
+</script>
+<!-- Additional helper: Content for LinkedIn caption & post message shown on screen via tooltip -->
+<!-- <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+    <div onclick="copyLinkedInText()" style="background: #0a66c2; color: white; padding: 12px 20px; border-radius: 40px; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.2); font-weight: bold; display: flex; align-items: center; gap: 8px;">
+        <i class="fab fa-linkedin"></i> Copy LinkedIn Post
+    </div>
+</div> -->
+<script>
+    function copyLinkedInText() {
+        const textToCopy = document.getElementById('linkedinPostContent').innerText;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            alert("✅ LinkedIn post copied! Paste it directly on LinkedIn. Don't forget to add your live website URL in the caption.");
+        }).catch(() => {
+            alert("⚠️ Manual copy: select text from below.\n\n" + textToCopy);
+        });
+    }
+
+    // Sticky header effect & polite console message
+    window.addEventListener('load', () => {
+        console.log("Nexify hiring page ready. Use the floating LinkedIn button to copy post content!");
+    });
+</script>
+</body>
+</html>
